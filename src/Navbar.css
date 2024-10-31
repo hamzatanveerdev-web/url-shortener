@@ -1,0 +1,86 @@
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: none; /* Add a semi-transparent background */
+    color: white;
+
+
+  }
+
+  
+  .navbar-logo  .logo{
+  border: none;
+
+  
+  border-radius: 4px;
+  cursor: pointer;
+  background: linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%);
+
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  }
+  
+  .navbar-buttons {
+    display: flex;
+    gap: 10px;
+    
+  }
+  
+  .btn-login {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    
+  }
+  .btn-register {
+    padding: 8px 16px;
+    border: none;
+    margin-right: 10px;
+    box-shadow: 10px 9px 22px 0px #144EE361;
+text-decoration: none;
+    border-radius: 48px;
+    cursor: pointer;
+    
+  }
+  
+  .btn-login {
+    background: #181E29;
+
+    color: white;
+    border-radius:20px ;
+  }
+  
+  .btn-register {
+    background: #144EE3;
+
+    color: white;
+    border-radius:20px ;
+   
+  }
+  
+  .btn-login:hover,
+  .btn-register:hover {
+    opacity: 0.8;
+  }
+  @media (max-width: 768px) {
+
+    .btn-register {
+     display: none;
+    }
+    .navbar-logo  .logo{
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background: linear-gradient(89.92deg, #144EE3 -0.02%, #EB568E 18.86%, #A353AA 64.49%, #144EE3 100.67%);
+      font-size: 30px;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      }
+      
+  }
