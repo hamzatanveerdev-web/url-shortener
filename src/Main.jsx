@@ -166,7 +166,7 @@ const handleSwitchChange = () => {
                     </tr>
                 </thead>
                 <tbody>
-                
+                <p>{console.log("Data before sorting:", data)}</p>
 {data.sort((a, b) => new Date(b.date) - new Date(a.date)).map((item) => (
     <tr key={item._id}>
         <td className="url-cell">
