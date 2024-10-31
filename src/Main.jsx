@@ -10,7 +10,7 @@ function Main() {
   const [url,seturl]=useState("");
   const [check,setcheck]=useState(false);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
-  const apiUrl = "http://localhost:5100/api/url"
+  const apiUrl = `${process.env.REACT_APP_API_URL}/api/url`;
 const [data ,setdata]=useState([])
 const [uniqueId,setuniqueId]=useState("")
 const submiturl = async () => {
@@ -68,7 +68,7 @@ useEffect(() => {
     try {
       const userid = localStorage.getItem('userid');
       console.log(userid);
-      const response = await axios.get(`http://localhost:5100/api/url/getrecords?id=${userid}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/url/getrecords?id=${userid}`);
 
       if (response.status === 200) {
         setdata(response.data);
