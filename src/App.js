@@ -1,9 +1,9 @@
 import  { Toaster } from 'react-hot-toast';
 import './App.css';
-import { Route,BrowserRouter, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Main from './Main';
-import {ToastContainer} from 'react-toastify';
+
 import Login from './Login';
 import Register from './Register';
 import { AuthProvider } from './AuthProvider';

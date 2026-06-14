@@ -36,7 +36,7 @@ function Login() {
           setEmail('');
           setSuccess('Registration successful!');
           setError('');
-          window.location.href='/'
+          navigate('/')
         }
        
       })
