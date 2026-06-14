@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function Register() {
 
-  const apiUrl =  `${process.env.REACT_APP_API_URL}/api/url`;
+  const apiUrl =  `http://localhost:5100/api/url`;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');

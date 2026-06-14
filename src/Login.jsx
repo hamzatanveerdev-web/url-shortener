@@ -8,7 +8,7 @@ function Login() {
 
 
   const navigate = useNavigate();
-  const apiUrl = `${process.env.REACT_APP_API_URL}/api/url`;
+  const apiUrl = `http://localhost:5100/api/url`;
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(''); // State for error message

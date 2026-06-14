@@ -10,7 +10,8 @@ function Main() {
   const [url,seturl]=useState("");
   const [check,setcheck]=useState(false);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
-  const apiUrl = `${process.env.REACT_APP_API_URL}/api/url`;
+  
+  const apiUrl = `http://localhost:5100/api/url`;
 const [data ,setdata]=useState([])
 const [uniqueId,setuniqueId]=useState("")
 const submiturl = async () => {
@@ -68,7 +69,7 @@ useEffect(() => {
     try {
       const userid = localStorage.getItem('userid');
       console.log(userid);
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/url/getrecords?id=${userid}`);
+      const response = await axios.get(`http://localhost:5100/api/url/getrecords?id=${userid}`);
 
       if (response.status === 200) {
         setdata(response.data);
@@ -167,7 +168,7 @@ const handleSwitchChange = () => {
                 </thead>
                 <tbody>
                 <p>{console.log("Data before sorting:", data)}</p>
-{data.sort((a, b) => new Date(b.date) - new Date(a.date)).map((item) => (
+{data.map((item) => (
     <tr key={item._id}>
         <td className="url-cell">
             <a href={`${apiUrl}/${item.shortUrl}`}>{`${apiUrl}/${item.shortUrl}`}</a>
