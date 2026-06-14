@@ -3,12 +3,13 @@ import './Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { API_CONFIG } from './api';
 
 function Login() {
 
 
   const navigate = useNavigate();
-  const apiUrl = `http://localhost:5100/api/url`;
+  const apiUrl = API_CONFIG.ENDPOINTS.LOGIN;
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(''); // State for error message
@@ -24,7 +25,7 @@ function Login() {
   const signupbtn = () => { 
 
     const data={password,email}
-    axios.post(`${apiUrl}/login`,{data} )
+    axios.post(apiUrl,{data} )
       .then((res) => {
         console.log(res.data);
         if(res.status===200){

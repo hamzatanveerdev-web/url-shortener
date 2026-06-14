@@ -5,13 +5,14 @@ import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
+import { API_CONFIG } from './api';
 function Main() {
   const [UrlSHORTcOUNT, setUrlSHORTcOUNT] = useState(0);
   const [url,seturl]=useState("");
   const [check,setcheck]=useState(false);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   
-  const apiUrl = `http://localhost:5100/api/url`;
+  const apiUrl = API_CONFIG.BASE_URL;
 const [data ,setdata]=useState([])
 const [uniqueId,setuniqueId]=useState("")
 const submiturl = async () => {
@@ -37,7 +38,7 @@ const submiturl = async () => {
   if (urlCount < 4 || token) {
     try {
       console.log(uniqueIds);
-      const res = await axios.post(`${apiUrl}/genrateshorturl`, {
+      const res = await axios.post(API_CONFIG.ENDPOINTS.GENERATE_SHORT_URL, {
         userid: uniqueIds,
         url,
       });
@@ -69,7 +70,7 @@ useEffect(() => {
     try {
       const userid = localStorage.getItem('userid');
       console.log(userid);
-      const response = await axios.get(`http://localhost:5100/api/url/getrecords?id=${userid}`);
+      const response = await axios.get(API_CONFIG.ENDPOINTS.GET_RECORDS(userid));
 
       if (response.status === 200) {
         setdata(response.data);
@@ -171,7 +172,7 @@ const handleSwitchChange = () => {
 {data.map((item) => (
     <tr key={item._id}>
         <td className="url-cell">
-            <a href={`${apiUrl}/${item.shortUrl}`}>{`${apiUrl}/${item.shortUrl}`}</a>
+            <a href={API_CONFIG.ENDPOINTS.REDIRECT(item.shortUrl)}>{API_CONFIG.ENDPOINTS.REDIRECT(item.shortUrl)}</a>
         </td>
         <td className="url-cell">
             <a href={`${item.originalUrl}`}>

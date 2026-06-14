@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
+import { API_CONFIG } from './api';
 
 
 function Register() {
 
-  const apiUrl =  `http://localhost:5100/api/url`;
+  const apiUrl = API_CONFIG.ENDPOINTS.REGISTER;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ function Register() {
   const signupbtn = () => { 
 
     const data={username,password,email}
-    axios.post(`${apiUrl}/register`,{data} )
+    axios.post(apiUrl,{data} )
       .then((res) => {
         console.log(res.data);
         // If registration is successful, clear inputs and display success message
