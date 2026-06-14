@@ -3,10 +3,10 @@ import './Login.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { API_CONFIG } from './api';
-
+import { useNavigate } from 'react-router-dom';
 function Login() {
 
-
+  const navigate = useNavigate();
 
   const apiUrl = API_CONFIG.ENDPOINTS.LOGIN;
   const [password, setPassword] = useState('');
@@ -35,7 +35,7 @@ function Login() {
           setEmail('');
           setSuccess('Registration successful!');
           setError('');
-          navigate('/')
+          navigate('/main');
         }
        
       })
