@@ -7,20 +7,20 @@ import { useState,useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import { API_CONFIG } from './api';
 function Main() {
-  const [UrlSHORTcOUNT, setUrlSHORTcOUNT] = useState(0);
+
   const [url,seturl]=useState("");
-  const [check,setcheck]=useState(false);
+
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   
-  const apiUrl = API_CONFIG.BASE_URL;
+
 const [data ,setdata]=useState([])
-const [uniqueId,setuniqueId]=useState("")
+
 const submiturl = async () => {
   const token = Cookies.get('authToken');
   const storedUrlCount = localStorage.getItem('UrlSHORTCOUNT');
   const urlCount = storedUrlCount ? Number(storedUrlCount) : 0; // Convert to number, default to 0
   console.log(urlCount);
-  setUrlSHORTcOUNT(urlCount);
+
 
   const userId = localStorage.getItem('userid');
   console.log("User ID:", userId);
@@ -29,8 +29,8 @@ const submiturl = async () => {
   if (userId === null) {
     uniqueIds = uuidv4();  // Generate a random unique ID
     console.log("Generated ID:", uniqueIds);
-    setuniqueId(uniqueIds);
-    setcheck(true);
+
+
   } else {
     uniqueIds = userId;
   }
@@ -50,7 +50,7 @@ const submiturl = async () => {
 
         const newUrlCount = urlCount + 1; // Increment URL count
         localStorage.setItem('UrlSHORTCOUNT', newUrlCount); 
-        setUrlSHORTcOUNT(newUrlCount); // Update state
+
         seturl(''); // Clear the URL input
     
     

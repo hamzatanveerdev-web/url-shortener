@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { API_CONFIG } from './api';
 
 function Login() {
 
 
-  const navigate = useNavigate();
+
   const apiUrl = API_CONFIG.ENDPOINTS.LOGIN;
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');

@@ -12,7 +12,7 @@ const [check,setcheck]=useState(false);
 const [user,setuser]=useState("");
   const navigate = useNavigate();
   const handleLogout = () => {
-    const token = Cookies.remove('authToken');
+    Cookies.remove('authToken');
     setcheck(false);
     navigate('/login'); 
   };
