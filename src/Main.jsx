@@ -14,6 +14,8 @@ function Main() {
   
 
 const [data ,setdata]=useState([])
+const [generatedShortUrl, setGeneratedShortUrl] = useState("");
+const [showShortUrl, setShowShortUrl] = useState(false);
 
 const submiturl = async () => {
   const token = Cookies.get('authToken');
@@ -51,6 +53,9 @@ const submiturl = async () => {
         const newUrlCount = urlCount + 1; // Increment URL count
         localStorage.setItem('UrlSHORTCOUNT', newUrlCount); 
 
+        const shortUrl = API_CONFIG.ENDPOINTS.REDIRECT(res.data.shortUrl);
+        setGeneratedShortUrl(shortUrl);
+        setShowShortUrl(true);
         seturl(''); // Clear the URL input
     
     
@@ -107,12 +112,67 @@ const handleSwitchChange = () => {
 
 
  }, [isSwitchOn]);
+
+  const handleCopyShortUrl = () => {
+    if (navigator.clipboard && generatedShortUrl) {
+      navigator.clipboard.writeText(generatedShortUrl)
+        .then(() => {
+          toast.success('Link copied to clipboard!');
+          setShowShortUrl(false);
+          setGeneratedShortUrl('');
+        })
+        .catch(err => {
+          console.error('Failed to copy link:', err);
+          toast.error('Failed to copy link');
+        });
+    }
+  };
   return (
     <div>
 
     <div className='main-container'>
       <h1><span>Shorten Your Loooong Links :)</span></h1>
       <p className="px-4 px-md-6 py-2">Linkly is an efficient and easy-to-use URL shortening service that streamlines your online experience.</p>
+
+      {showShortUrl && (
+        <div className="short-url-display" style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          marginBottom: '20px',
+          padding: '15px',
+          background: 'rgba(255, 255, 255, 0.1)',
+          borderRadius: '8px',
+          maxWidth: '600px',
+          margin: '0 auto 20px'
+        }}>
+          <span style={{
+            color: '#4ade80',
+            fontSize: '16px',
+            wordBreak: 'break-all',
+            flex: 1
+          }}>
+            {generatedShortUrl}
+          </span>
+          <button
+            onClick={handleCopyShortUrl}
+            style={{
+              background: '#4ade80',
+              color: '#000',
+              border: 'none',
+              padding: '8px 16px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            📋 Copy
+          </button>
+        </div>
+      )}
       <div className="search">
       <input
         type="text"
