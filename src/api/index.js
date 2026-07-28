@@ -1,7 +1,7 @@
 // Centralized API configuration for the URL Shortener application
 // All API calls should use this configuration to ensure consistency
 
-const API_BASE_URL = 'https://url-shortenerbackend-silk.vercel.app/api/url';
+const API_BASE_URL = 'https://mini-url-322.vercel.app/api/url';
 
 export const API_CONFIG = {
   BASE_URL: API_BASE_URL,
